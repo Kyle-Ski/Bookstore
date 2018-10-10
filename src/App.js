@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import BookTitles from './BookTitles';
+import SearchBar from './SearchBar';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 class App extends Component {
 
@@ -20,7 +22,9 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
+        hi
         </header>
+        <SearchBar />
         <BookTitles bookTitleAPI={this.state.bookTitles}/>
       </div>
     );
