@@ -3,6 +3,7 @@ import './App.css';
 import BookTitles from './BookTitles';
 import SearchBar from './SearchBar';
 import 'bootstrap/dist/css/bootstrap.min.css'
+import Cart from './Cart'
 
 class App extends Component {
 
@@ -21,11 +22,16 @@ class App extends Component {
 
     return (
       <div className="App">
-        <header className="App-header">
-        hi
-        </header>
+       
         <SearchBar />
-        <BookTitles bookTitleAPI={this.state.bookTitles}/>
+        <div className="containerr">
+        <div className="books">
+          <BookTitles bookTitleAPI={this.state.bookTitles}/>
+        </div>
+        <div className="cart">
+          <Cart />
+        </div>
+        </div>
       </div>
     );
   }
