@@ -43,6 +43,9 @@ nav {
   order:2;
 }
 
+#booksList{
+  height: 15vh;
+}
 
 @keyframes App-logo-spin {
   from {

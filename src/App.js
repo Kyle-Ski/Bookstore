@@ -8,13 +8,21 @@ import Cart from './Cart'
 class App extends Component {
 
   state = {
-    bookTitles: []
+    bookTitles: [],
+    cart: []
   }
 
   async componentDidMount(){
     const response = await fetch('http://localhost:8082/api/books')
     const books = await response.json()
     this.setState({bookTitles: books})
+  }
+
+  addToCart = (e) => {
+    e.preventDefault()
+    console.log('the target is:',e.target)
+    console.log('the value is:',e.target.value)
+
   }
   
   render() {
@@ -26,7 +34,7 @@ class App extends Component {
         <SearchBar />
         <div className="containerr">
         <div className="books">
-          <BookTitles bookTitleAPI={this.state.bookTitles}/>
+          <BookTitles bookTitleAPI={this.state.bookTitles} addToCart={this.addToCart}/>
         </div>
         <div className="cart">
           <Cart />

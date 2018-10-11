@@ -5,7 +5,8 @@ const Cart = () => {
     return (
         <div className="container-fluid">
         <div className="list-group-item col-md-12">
-        <table class="table table-striped table-hover">
+        <div> Shopping Cart
+        <table className="table table-striped table-hover">
             <thead>
                 <tr>
                 <th scope="col">#</th>
@@ -28,12 +29,13 @@ const Cart = () => {
                 <td>@fat</td>
                 </tr>
                 <tr>
-                <th scope="row" className="table-active">3</th>
-                <td colSpan="2">Total</td>
+                <th scope="row" className="table-active">Total</th>
+                <td colSpan="2"></td>
                 <td>$$$$</td>
                 </tr>
             </tbody>
             </table>
+            </div>
         </div>
         </div>
     )
