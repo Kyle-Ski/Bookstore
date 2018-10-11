@@ -18,28 +18,31 @@ class App extends Component {
     this.setState({bookTitles: books})
   }
 
+
   addToCart = (e) => {
     e.preventDefault()
-    console.log('the target is:',e.target)
-    console.log('the value is:',e.target.value)
+    let bookToAdd = this.state.bookTitles.filter(book => book.title === e.target.value)
+    console.log('the book to add is:',bookToAdd)
+    this.setState({cart: this.state.cart.concat(bookToAdd)})
 
+  }
+  getTotal = () => {
+    return this.state.cart.length * 5
   }
   
   render() {
 
-
     return (
       <div className="App">
-       
         <SearchBar />
         <div className="containerr">
-        <div className="books">
-          <BookTitles bookTitleAPI={this.state.bookTitles} addToCart={this.addToCart}/>
-        </div>
-        <div className="cart">
-          <Cart />
-        </div>
-        </div>
+          <div className="books">
+            <BookTitles bookTitleAPI={this.state.bookTitles} addToCart={this.addToCart}/>
+          </div>
+          <div className="cart">
+            <Cart cartItems={this.state.cart} getTotal={this.getTotal}/>
+          </div>
+          </div>
       </div>
     );
   }
