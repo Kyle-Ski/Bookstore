@@ -9,7 +9,8 @@ class App extends Component {
 
   state = {
     bookTitles: [],
-    cart: []
+    cart: [],
+    isFilterByAuthor: false
   }
 
   async componentDidMount(){
@@ -18,11 +19,15 @@ class App extends Component {
     this.setState({bookTitles: books})
   }
 
+  filterByAuthor = (e) => {
+    e.preventDefault()
+    console.log('filter by author')
+    this.state.isFilterByAuthor ? this.setState({isFilterByAuthor: false}) : this.setState({isFilterByAuthor: true})
+  }
 
   addToCart = (e) => {
     e.preventDefault()
     let bookToAdd = this.state.bookTitles.filter(book => book.title === e.target.value)
-    console.log('the book to add is:',bookToAdd)
     this.setState({cart: this.state.cart.concat(bookToAdd)})
 
   }
@@ -34,10 +39,13 @@ class App extends Component {
 
     return (
       <div className="App">
-        <SearchBar />
+        <SearchBar filterByAuthor={this.filterByAuthor}/>
         <div className="containerr">
           <div className="books">
-            <BookTitles bookTitleAPI={this.state.bookTitles} addToCart={this.addToCart}/>
+            <BookTitles 
+              bookTitleAPI={this.state.bookTitles} 
+              addToCart={this.addToCart}
+            />
           </div>
           <div className="cart">
             <Cart cartItems={this.state.cart} getTotal={this.getTotal}/>
