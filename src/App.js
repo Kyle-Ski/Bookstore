@@ -23,8 +23,8 @@ class App extends Component {
   }
 
 
-  filterThoseBooks = () => {
-
+  filterThoseAuthors = (e) => {
+    e.preventDefault()
     let sorted = this.state.bookTitles.sort((a,b) => {
       let authorA = a.author.toLowerCase(), authorB = b.author.toLowerCase()
       if(authorA < authorB){
@@ -38,9 +38,19 @@ class App extends Component {
     this.setState({bookTitles: sorted})
   }
 
-  filterByAuthor = (e) => {
+  filterThoseTitles = (e) => {
     e.preventDefault()
-    this.state.isFilterByAuthor ? this.setState({isFilterByAuthor: false}) : this.setState({isFilterByAuthor: true})
+    let sortedTitle = this.state.bookTitles.sort((a,b) => {
+      let titleA = a.title.toLowerCase(), titleB = b.title.toLowerCase()
+      if(titleA < titleB){
+        return -1
+      }
+      if(titleA > titleB){
+        return 1
+      }
+      return 0
+    })
+    this.setState({bookTitles: sortedTitle})
   }
 
   addToCart = (e) => {
@@ -58,8 +68,8 @@ class App extends Component {
     return (
       <div className="App">
         <SearchBar 
-        filterByAuthor={this.filterByAuthor}
-        filterThoseBooks={this.filterThoseBooks}
+        filterThoseTitles={this.filterThoseTitles}
+        filterThoseAuthors={this.filterThoseAuthors}
         />
         <div className="containerr">
           <div className="books">

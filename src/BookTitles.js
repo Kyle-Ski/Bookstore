@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BookTitles = ({bookTitleAPI, addToCart, sortedBookTitles, isFilterByAuthor}) => {
+const BookTitles = ({bookTitleAPI, addToCart}) => {
     const addTitle = (booksList) => {
 
         return booksList.map((book,i) => {
@@ -15,7 +15,7 @@ const BookTitles = ({bookTitleAPI, addToCart, sortedBookTitles, isFilterByAuthor
     }
     return (
         <div>
-            {isFilterByAuthor ? addTitle(bookTitleAPI) : addTitle(sortedBookTitles)}
+            {addTitle(bookTitleAPI)}
         </div>
     )
 }
