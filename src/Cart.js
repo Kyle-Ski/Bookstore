@@ -15,10 +15,10 @@ const Cart = ({cartItems, getTotal}) => {
 
 
     return (
-        <div className="container-fluid">
+        <div className="container-fluid sticky-top">
         <div className="list-group-item col-md-12">
-        <div> Shopping Cart
-        <table className="table table-striped table-hover">
+         <h3>Shopping Cart</h3>
+        <table className="table table-striped table-bordered table-hover">
             <thead>
                 <tr>
                 <th scope="col">Title</th>
@@ -35,7 +35,7 @@ const Cart = ({cartItems, getTotal}) => {
             </tbody>
             </table>
             </div>
-        </div>
+        
         </div>
     )
 }

@@ -11,6 +11,7 @@ class App extends Component {
     bookTitles: [],
     cart: [],
     isFilterByAuthor: true,
+    searchTerm: ''
   }
 
   async componentDidMount(){
@@ -22,6 +23,9 @@ class App extends Component {
 
   }
 
+  searchByTitle = (e) => {
+    this.setState({searchTerm: e.target.value})
+  }
 
   filterThoseAuthors = (e) => {
     e.preventDefault()
@@ -37,6 +41,7 @@ class App extends Component {
     })
     this.setState({bookTitles: sorted})
   }
+
 
   filterThoseTitles = (e) => {
     e.preventDefault()
@@ -70,6 +75,8 @@ class App extends Component {
         <SearchBar 
         filterThoseTitles={this.filterThoseTitles}
         filterThoseAuthors={this.filterThoseAuthors}
+        searchByTitle={this.searchByTitle}
+        searchTerm={this.state.searchTerm}
         />
         <div className="containerr">
           <div className="books">

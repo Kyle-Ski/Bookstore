@@ -1,8 +1,8 @@
 import React from 'react';
 
-const SearchBar = ({filterThoseTitles, filterThoseAuthors}) =>{
+const SearchBar = ({filterThoseTitles, filterThoseAuthors, searchByTitle, searchTerm}) =>{
 
-    const consoleLog = () => console.log('hi')
+    const consoleLog = (e) => console.log(searchTerm)
 
     return (
         <nav className="navbar sticky-top navbar-expand-lg navbar-light blue-grey lighten-5 mb-4">
@@ -16,7 +16,7 @@ const SearchBar = ({filterThoseTitles, filterThoseAuthors}) =>{
                     <button className="btn btn-outline-secondary" href="http://elastic-juice.surge.sh/">Pricing</button>
                 </div>
                 <form className="form-inline">
-                    <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"/>
+                    <input onChange={searchByTitle} className="form-control mr-sm-2" type="text" placeholder="Search by Title" aria-label="Search"/>
                     <button onClick={consoleLog} className="btn btn-outline-secondary mr-sm-0" type="button" id="button-addon2">Submit</button>
                 </form>
             </div>

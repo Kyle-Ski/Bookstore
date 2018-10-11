@@ -46,7 +46,7 @@ nav {
 }
 
 #booksList{
-  height: 15vh;
+  min-height: 15vh;
 }
 
 @keyframes App-logo-spin {
