@@ -23,6 +23,17 @@ class App extends Component {
 
   }
 
+  refresh = () => {
+    window.location.reload()
+  }
+
+  searchButton = (e) => {
+    e.preventDefault()
+    let search = this.state.bookTitles.filter(book => book.title === this.state.searchTerm)
+    // let match = search.title.search(this.state.searchTerm)
+    this.setState({bookTitles: search})
+  }
+
   searchByTitle = (e) => {
     this.setState({searchTerm: e.target.value})
   }
@@ -77,6 +88,8 @@ class App extends Component {
         filterThoseAuthors={this.filterThoseAuthors}
         searchByTitle={this.searchByTitle}
         searchTerm={this.state.searchTerm}
+        searchButton={this.searchButton}
+        refresh={this.refresh}
         />
         <div className="containerr">
           <div className="books">
