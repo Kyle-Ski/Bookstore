@@ -1,11 +1,10 @@
 import React from 'react';
-import BookTitles from './BookTitles';
 
 const Cart = ({cartItems, getTotal}) => {
     const addToCart = (list) => {
         return list.map((book,i) => {
             return (
-                <tr>
+                <tr key={i}>
                 <td>{book.title}</td>
                 <td>{book.author}</td>
                 <td>${book.price}</td>
