@@ -1,9 +1,9 @@
 import React from 'react';
 
-const BookTitles = ({bookTitleAPI, addToCart, isFilterByAuthor}) => {
-    const addTitle = (json) => {
+const BookTitles = ({bookTitleAPI, addToCart, sortedBookTitles, isFilterByAuthor}) => {
+    const addTitle = (booksList) => {
 
-        return json.map((book,i) => {
+        return booksList.map((book,i) => {
             return (
                 <button key={i} id="booksList" type="button" onClick={addToCart} value={book.title} className="list-group-item list-group-item-action">
                 {book.title}: {book.subtitle}<br/>
@@ -15,7 +15,7 @@ const BookTitles = ({bookTitleAPI, addToCart, isFilterByAuthor}) => {
     }
     return (
         <div>
-        {addTitle(bookTitleAPI)}
+            {isFilterByAuthor ? addTitle(bookTitleAPI) : addTitle(sortedBookTitles)}
         </div>
     )
 }

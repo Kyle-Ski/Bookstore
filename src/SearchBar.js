@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SearchBar = ({filterByAuthor}) =>{
+const SearchBar = ({filterByAuthor, filterThoseBooks}) =>{
 
     const consoleLog = () => console.log('hi')
 
@@ -11,8 +11,8 @@ const SearchBar = ({filterByAuthor}) =>{
                     aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <div className="btn-group" role="group">
-                    <button className="btn btn-outline-secondary" onClick={filterByAuthor}>Filter By Author</button>
-                    <button className="btn btn-outline-secondary" href="http://elastic-juice.surge.sh/">Features</button>
+                    <button className="btn btn-outline-secondary" onClick={filterThoseBooks}>Filter By Author</button>
+                    <button className="btn btn-outline-secondary" onClick={filterThoseBooks}>filter those books</button>
                     <button className="btn btn-outline-secondary" href="http://elastic-juice.surge.sh/">Pricing</button>
                 </div>
                 <form className="form-inline">

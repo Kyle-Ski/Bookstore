@@ -10,18 +10,36 @@ class App extends Component {
   state = {
     bookTitles: [],
     cart: [],
-    isFilterByAuthor: false
+    isFilterByAuthor: true,
   }
 
   async componentDidMount(){
     const response = await fetch('http://localhost:8082/api/books')
     const books = await response.json()
-    this.setState({bookTitles: books})
+    this.setState({
+      bookTitles: books
+    })
+
+  }
+
+
+  filterThoseBooks = () => {
+
+    let sorted = this.state.bookTitles.sort((a,b) => {
+      let authorA = a.author.toLowerCase(), authorB = b.author.toLowerCase()
+      if(authorA < authorB){
+        return -1
+      }
+      if(authorA > authorB){
+        return 1
+      }
+      return 0
+    })
+    this.setState({bookTitles: sorted})
   }
 
   filterByAuthor = (e) => {
     e.preventDefault()
-    console.log('filter by author')
     this.state.isFilterByAuthor ? this.setState({isFilterByAuthor: false}) : this.setState({isFilterByAuthor: true})
   }
 
@@ -39,12 +57,17 @@ class App extends Component {
 
     return (
       <div className="App">
-        <SearchBar filterByAuthor={this.filterByAuthor}/>
+        <SearchBar 
+        filterByAuthor={this.filterByAuthor}
+        filterThoseBooks={this.filterThoseBooks}
+        />
         <div className="containerr">
           <div className="books">
             <BookTitles 
               bookTitleAPI={this.state.bookTitles} 
               addToCart={this.addToCart}
+              isFilterByAuthor={this.state.isFilterByAuthor}
+              sortedBookTitles={this.state.sortedBookTitles}
             />
           </div>
           <div className="cart">

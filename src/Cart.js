@@ -29,7 +29,7 @@ const Cart = ({cartItems, getTotal}) => {
             <tbody>
                 {addToCart(cartItems)}
                 <tr>
-                <td colSpan="2" className="table-active">Total:</td>
+                <th colSpan="2" className="table-active">Total:</th>
                 <td className="table-active">${getTotal()}</td>
                 </tr>
             </tbody>
