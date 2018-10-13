@@ -13,8 +13,7 @@ class App extends Component {
     cart: [],
     isFilterByAuthor: true,
     searchTerm: '',
-    onlyTitles: [],
-    onlyAuthors: []
+    searchedBooks: []
   }
 
   async componentDidMount(){
@@ -24,6 +23,7 @@ class App extends Component {
     const byAuthors = books.map(book => book.author)
     this.setState({
       bookTitles: books,
+      searchedBooks: books,
       onlyTitles: byTitles,
       onlyAuthors: byAuthors
     })
@@ -34,14 +34,24 @@ class App extends Component {
     window.location.reload()
   }
 
-  searchButton = (e) => {
+  searchByTitle = (e) => {
     e.preventDefault()
-    let search = this.state.bookTitles.
-    // let match = search.title.search(this.state.searchTerm)
-    this.setState({bookTitles: search})
+    let filteredBooks = this.state.bookTitles.filter(book => {
+      return book.title.toLowerCase().indexOf(this.state.searchTerm.toLocaleLowerCase()) !== -1
+    })
+    this.setState({searchedBooks: filteredBooks})
+  
   }
 
-  searchByTitle = (e) => {
+  searchByAuthor = (e) => {
+    e.preventDefault()
+    let filteredAuthors = this.state.bookTitles.filter(book => {
+      return book.author.toLowerCase().indexOf(this.state.searchTerm.toLocaleLowerCase()) !== -1
+    })
+    this.setState({searchedBooks: filteredAuthors})
+  }
+
+  searchInput = (e) => {
     this.setState({searchTerm: e.target.value})
   }
 
@@ -93,15 +103,16 @@ class App extends Component {
         <SearchBar 
         filterThoseTitles={this.filterThoseTitles}
         filterThoseAuthors={this.filterThoseAuthors}
-        searchByTitle={this.searchByTitle}
+        searchInput={this.searchInput}
         searchTerm={this.state.searchTerm}
-        searchButton={this.searchButton}
+        searchByAuthor={this.searchByAuthor}
         refresh={this.refresh}
+        searchByTitle={this.searchByTitle}
         />
         <div className="containerr">
           <div className="books">
             <BookTitles 
-              bookTitleAPI={this.state.bookTitles} 
+              booksToRender={this.state.searchedBooks} 
               addToCart={this.addToCart}
               isFilterByAuthor={this.state.isFilterByAuthor}
               sortedBookTitles={this.state.sortedBookTitles}

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SearchBar = ({filterThoseTitles, filterThoseAuthors, searchByTitle, searchTerm, searchButton, refresh}) =>{
+const SearchBar = ({filterThoseTitles, filterThoseAuthors, searchInput, searchByAuthor, refresh, searchByTitle}) =>{
 
 
     return (
@@ -15,10 +15,10 @@ const SearchBar = ({filterThoseTitles, filterThoseAuthors, searchByTitle, search
                     <button className="btn btn-outline-secondary" onClick={filterThoseTitles}>Filter by Title</button>
                 </div>
                 <form className="form-inline">
-                    <input onChange={searchByTitle} className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"/>
+                    <input onChange={searchInput} className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"/>
                     <div className="btn-group" role="group">
-                    <button className="btn btn-outline-secondary" onClick={refresh}>Search by Title</button>
-                    <button className="btn btn-outline-secondary" onClick={filterThoseAuthors}>Search by Author</button>
+                    <button className="btn btn-outline-secondary" onClick={searchByTitle}>Search by Title</button>
+                    <button className="btn btn-outline-secondary" onClick={searchByAuthor}>Search by Author</button>
                     </div>                
                     </form>
             </div>

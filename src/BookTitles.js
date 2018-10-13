@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BookTitles = ({bookTitleAPI, addToCart}) => {
+const BookTitles = ({booksToRender, addToCart}) => {
     const addTitle = (booksList) => {
 
         return booksList.map((book,i) => {
@@ -15,7 +15,7 @@ const BookTitles = ({bookTitleAPI, addToCart}) => {
     }
     return (
         <div>
-            {addTitle(bookTitleAPI)}
+            {addTitle(booksToRender)}
         </div>
     )
 }
