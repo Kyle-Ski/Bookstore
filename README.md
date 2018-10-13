@@ -11,6 +11,7 @@ node server.js
 ```
 * instead of running ```node server.js``` run ```npm start```
 * the correct API endpoint you need to have running on a local host is: [http://localhost:8082/api/books](http://localhost:8082/api/books)
+* to access a deployed version without using the locally hosted API(it is hard codded into App.js) use this [link](http://greedy-drink.surge.sh)
 # The application was to meet the following user stories:
 
 * As a customer, when I arrive to the homepage, I see a list of all of the books, a search bar on top,  and a checkout/cart area to the right.
