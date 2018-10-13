@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Cart = ({cartItems, getTotal}) => {
+const Cart = ({cartItems, getTotal, removeFromCartTitle}) => {
     const addToCart = (list) => {
         return list.map((book,i) => {
             return (
                 <tr key={i}>
-                <td>{book.title}</td>
-                <td>{book.author}</td>
+                <td className="clickable-row" onClick={removeFromCartTitle}>{book.title}</td>
+                <td className="clickable-row" onClick={removeFromCartTitle}>{book.author}</td>
                 <td>${book.price}</td>
                 </tr>
             )

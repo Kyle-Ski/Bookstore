@@ -11,9 +11,9 @@ class App extends Component {
   state = {
     bookTitles: [],
     cart: [],
-    isFilterByAuthor: true,
     searchTerm: '',
-    searchedBooks: []
+    searchedBooks: [],
+    cickedCart: []
   }
 
   async componentDidMount(){
@@ -24,6 +24,13 @@ class App extends Component {
       searchedBooks: books,
     })
 
+  }
+
+  removeFromCartTitle = (e) => {
+    e.preventDefault()
+    let clickValue = e.target.innerText
+    let index = this.state.cart.map(book => book.title).indexOf(clickValue)
+    this.setState({cickedCart: this.state.cart.splice(index,1)})    
   }
 
   refresh = () => {
@@ -85,7 +92,10 @@ class App extends Component {
   addToCart = (e) => {
     e.preventDefault()
     let bookToAdd = this.state.bookTitles.filter(book => book.title === e.target.value)
-    this.setState({cart: this.state.cart.concat(bookToAdd)})
+    this.setState({
+      cart: this.state.cart.concat(bookToAdd)
+
+    })
 
   }
   getTotal = () => {
@@ -110,12 +120,15 @@ class App extends Component {
             <BookTitles 
               booksToRender={this.state.searchedBooks} 
               addToCart={this.addToCart}
-              isFilterByAuthor={this.state.isFilterByAuthor}
               sortedBookTitles={this.state.sortedBookTitles}
             />
           </div>
           <div className="cart">
-            <Cart cartItems={this.state.cart} getTotal={this.getTotal}/>
+            <Cart cartItems={this.state.cart} 
+              getTotal={this.getTotal}
+              removeFromCartTitle={this.removeFromCartTitle}
+
+            />
           </div>
           </div>
       </div>
