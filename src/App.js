@@ -7,18 +7,25 @@ import Cart from './Cart'
 
 class App extends Component {
 
+
   state = {
     bookTitles: [],
     cart: [],
     isFilterByAuthor: true,
-    searchTerm: ''
+    searchTerm: '',
+    onlyTitles: [],
+    onlyAuthors: []
   }
 
   async componentDidMount(){
     const response = await fetch('http://localhost:8082/api/books')
     const books = await response.json()
+    const byTitles = books.map(book => book.title)
+    const byAuthors = books.map(book => book.author)
     this.setState({
-      bookTitles: books
+      bookTitles: books,
+      onlyTitles: byTitles,
+      onlyAuthors: byAuthors
     })
 
   }
@@ -29,7 +36,7 @@ class App extends Component {
 
   searchButton = (e) => {
     e.preventDefault()
-    let search = this.state.bookTitles.filter(book => book.title === this.state.searchTerm)
+    let search = this.state.bookTitles.
     // let match = search.title.search(this.state.searchTerm)
     this.setState({bookTitles: search})
   }

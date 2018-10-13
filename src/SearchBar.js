@@ -15,9 +15,12 @@ const SearchBar = ({filterThoseTitles, filterThoseAuthors, searchByTitle, search
                     <button className="btn btn-outline-secondary" onClick={filterThoseTitles}>Filter by Title</button>
                 </div>
                 <form className="form-inline">
-                    <input onChange={searchByTitle} className="form-control mr-sm-2" type="text" placeholder="Search by Title" aria-label="Search"/>
-                    <button onClick={searchButton} className="btn btn-outline-secondary mr-sm-0" type="button" id="button-addon2">Submit</button>
-                </form>
+                    <input onChange={searchByTitle} className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"/>
+                    <div className="btn-group" role="group">
+                    <button className="btn btn-outline-secondary" onClick={refresh}>Search by Title</button>
+                    <button className="btn btn-outline-secondary" onClick={filterThoseAuthors}>Search by Author</button>
+                    </div>                
+                    </form>
             </div>
         </nav>   
 
