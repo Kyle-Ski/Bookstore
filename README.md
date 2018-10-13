@@ -4,9 +4,11 @@ A deployed version of this project can be found at this [link](http://g99-shoppi
 # Welcome to the g[99] Bookstore App!
 This React application was my first time implementing API calls into an app.
 To access the API I used, fork and clone this [repo](https://github.com/Kyle-Ski/collective-api)
-```cd collective-api
+```
+cd collective-api
 npm install
-node server.js```
+node server.js
+```
 * instead of running ```node server.js``` run ```npm start```
 * the correct API endpoint you need to have running on a local host is: [http://localhost:8082/api/books](http://localhost:8082/api/books)
 # The application was to meet the following user stories:
