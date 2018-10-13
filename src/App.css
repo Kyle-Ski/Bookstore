@@ -43,10 +43,12 @@ nav {
 
 .cart {
   order:2;
+  min-width: 50vw;
 }
 
 #booksList{
-  min-height: 15vh;
+  min-height: 20vh;
+  min-width: 50vw;
 }
 
 @keyframes App-logo-spin {

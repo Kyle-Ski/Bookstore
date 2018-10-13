@@ -19,13 +19,9 @@ class App extends Component {
   async componentDidMount(){
     const response = await fetch('http://localhost:8082/api/books')
     const books = await response.json()
-    const byTitles = books.map(book => book.title)
-    const byAuthors = books.map(book => book.author)
     this.setState({
       bookTitles: books,
       searchedBooks: books,
-      onlyTitles: byTitles,
-      onlyAuthors: byAuthors
     })
 
   }
@@ -57,7 +53,7 @@ class App extends Component {
 
   filterThoseAuthors = (e) => {
     e.preventDefault()
-    let sorted = this.state.bookTitles.sort((a,b) => {
+    let sorted = this.state.searchedBooks.sort((a,b) => {
       let authorA = a.author.toLowerCase(), authorB = b.author.toLowerCase()
       if(authorA < authorB){
         return -1
@@ -67,13 +63,13 @@ class App extends Component {
       }
       return 0
     })
-    this.setState({bookTitles: sorted})
+    this.setState({searchedBooks: sorted})
   }
 
 
   filterThoseTitles = (e) => {
     e.preventDefault()
-    let sortedTitle = this.state.bookTitles.sort((a,b) => {
+    let sortedTitle = this.state.searchedBooks.sort((a,b) => {
       let titleA = a.title.toLowerCase(), titleB = b.title.toLowerCase()
       if(titleA < titleB){
         return -1
@@ -83,7 +79,7 @@ class App extends Component {
       }
       return 0
     })
-    this.setState({bookTitles: sortedTitle})
+    this.setState({searchedBooks: sortedTitle})
   }
 
   addToCart = (e) => {

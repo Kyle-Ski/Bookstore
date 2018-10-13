@@ -17,8 +17,8 @@ const SearchBar = ({filterThoseTitles, filterThoseAuthors, searchInput, searchBy
                 <form className="form-inline">
                     <input onChange={searchInput} className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"/>
                     <div className="btn-group" role="group">
-                    <button className="btn btn-outline-secondary" onClick={searchByTitle}>Search by Title</button>
-                    <button className="btn btn-outline-secondary" onClick={searchByAuthor}>Search by Author</button>
+                        <button className="btn btn-outline-secondary" onClick={searchByTitle}>Search by Title</button>
+                        <button className="btn btn-outline-secondary" onClick={searchByAuthor}>Search by Author</button>
                     </div>                
                     </form>
             </div>
