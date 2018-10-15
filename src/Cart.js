@@ -8,6 +8,7 @@ const Cart = ({cartItems, getTotal, removeFromCartTitle}) => {
                 <td className="clickable-row" onClick={removeFromCartTitle}>{book.title}</td>
                 <td className="clickable-row" onClick={removeFromCartTitle}>{book.author}</td>
                 <td>${book.price}</td>
+                <td><a href={book.website}>{book.subtitle}</a></td>
                 </tr>
             )
         })
@@ -24,6 +25,7 @@ const Cart = ({cartItems, getTotal, removeFromCartTitle}) => {
                 <th scope="col">Title</th>
                 <th scope="col">Author</th>
                 <th scope="col">Price</th>
+                <th scope="col">Website</th>
                 </tr>
             </thead>
             <tbody>
