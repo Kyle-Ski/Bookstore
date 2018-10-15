@@ -7,8 +7,8 @@ const Cart = ({cartItems, getTotal, removeFromCartTitle}) => {
                 <tr key={i}>
                 <td className="clickable-row" onClick={removeFromCartTitle}>{book.title}</td>
                 <td className="clickable-row" onClick={removeFromCartTitle}>{book.author}</td>
-                <td>${book.price}</td>
                 <td><a href={book.website}>{book.subtitle}</a></td>
+                <td>${book.price}</td>
                 </tr>
             )
         })
@@ -24,15 +24,18 @@ const Cart = ({cartItems, getTotal, removeFromCartTitle}) => {
                 <tr>
                 <th scope="col">Title</th>
                 <th scope="col">Author</th>
-                <th scope="col">Price</th>
                 <th scope="col">Website</th>
+                <th scope="col">Price</th>
                 </tr>
             </thead>
             <tbody>
                 {addToCart(cartItems)}
                 <tr>
-                <th colSpan="2" className="table-active">Total:</th>
+                <th colSpan="3" className="table-active">Total:</th>
                 <td className="table-active">${getTotal()}</td>
+                </tr>
+                <tr>
+                <th colSpan="4">Click a cart item to delete it from the list</th>
                 </tr>
             </tbody>
             </table>
